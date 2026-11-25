@@ -1,0 +1,21 @@
+{
+  "source": "Binance Spot",
+  "symbol": "BTCEUR",
+  "interval": "1d",
+  "retrieved_at_utc": "2026-11-25T18:51:57.444221+00:00",
+  "candle_date_utc": "2026-11-24",
+  "current_price_eur": 54321.91,
+  "last_closed_daily_close_eur": 54527.07,
+  "candles_used": 220,
+  "sma20": 61068.228,
+  "sma50": 67808.1136,
+  "sma200": 63140.14695,
+  "rsi14_wilder": 27.600625043839415,
+  "validation": {
+    "enough_candles": true,
+    "chronological": true,
+    "no_duplicate_candles": true,
+    "no_missing_daily_candles": true,
+    "current_candle_excluded": true
+  }
+}
