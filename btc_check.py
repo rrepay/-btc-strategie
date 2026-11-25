@@ -143,9 +143,13 @@ def main():
         opens[-1] / 1000, timezone.utc
     ).strftime("%Y-%m-%d")
 
+    fear_greed = fetch_cmc_fear_greed()
+
+    
     result = {
         "source": "Binance Spot",
         "symbol": SYMBOL,
+        "fear_greed": fear_greed,
         "interval": "1d",
         "retrieved_at_utc": datetime.now(timezone.utc).isoformat(),
         "candle_date_utc": candle_date,
