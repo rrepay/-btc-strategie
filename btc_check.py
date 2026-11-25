@@ -34,6 +34,34 @@ def fetch_binance(path, params):
 
     raise RuntimeError("Binance niet bereikbaar: " + " | ".join(errors))
 
+def fetch_cmc_fear_greed():
+    url = (
+        "https://pro-api.coinmarketcap.com/"
+        "public-api/v3/fear-and-greed/latest"
+    )
+    response = get_json(url)
+
+    data = response.get("data")
+    if not isinstance(data, dict):
+        raise RuntimeError("Ongeldig CoinMarketCap-antwoord")
+
+    value = data.get("value")
+    update_time = data.get("update_time")
+    classification = data.get("value_classification")
+
+    if not isinstance(value, int) or not 0 <= value <= 100:
+        raise RuntimeError("Ongeldige Fear & Greed-waarde")
+
+    if not update_time or not classification:
+        raise RuntimeError("Fear & Greed-gegevens onvolledig")
+
+    return {
+        "value": value,
+        "classification": classification,
+        "update_time": update_time,
+        "source": "CoinMarketCap"
+    }
+
 
 def sma(values, period):
     return sum(values[-period:]) / period
